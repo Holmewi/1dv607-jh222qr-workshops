@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+  dslVersion="1.0.0.0"
+  Id="ad5441a6-6b7e-4bb8-b770-88e7568976ef"
+  name="view" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <Interface
+        Id="ca75390e-d0d9-47e9-a481-f8a61c2a236a"
+        name="NavigationView"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="6ca61567-2169-4f59-b952-e9e746810ffb">
+            <classMoniker
+              Id="df13d2a1-cec1-4e51-b217-ce9cfba5b3ef"
+              LastKnownName="UserController"
+              LastKnownLocation="Package3_1410.uml" />
+          </dependency>
+        </suppliersInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="bbe11db0-a083-4ed8-ae6a-43a8256d68eb"
+        name="CreateMemberView"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="1b298c1e-eeac-4aad-9c09-651706d122fa"
+            isSubstitutable="false">
+            <interfaceMoniker
+              Id="ca75390e-d0d9-47e9-a481-f8a61c2a236a"
+              LastKnownName="NavigationView"
+              LastKnownLocation="Package2_1410.uml" />
+          </generalization>
+        </generalsInternal>
+      </Interface>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

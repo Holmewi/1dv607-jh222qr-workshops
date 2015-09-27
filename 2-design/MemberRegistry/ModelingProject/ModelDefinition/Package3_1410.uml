@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="e70e6fde-b619-420f-b8a5-e6ec7a054226"
+  name="controller" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="df13d2a1-cec1-4e51-b217-ce9cfba5b3ef"
+        name="UserController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="32acd8e9-9651-4002-808a-407d95f05fa4">
+            <classMoniker
+              Id="90748d1c-a93e-41de-ae40-862adab1b821"
+              LastKnownName="Member"
+              LastKnownLocation="Package_1410.uml" />
+          </dependency>
+          <dependency
+            Id="d2fcc1f2-2ce5-4bdb-bffa-010fde261eac">
+            <classMoniker
+              Id="9b549b33-be40-4585-87e9-bf5a87d5cf36"
+              LastKnownName="Registry"
+              LastKnownLocation="Package_1410.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
