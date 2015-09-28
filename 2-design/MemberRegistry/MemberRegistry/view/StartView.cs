@@ -9,10 +9,14 @@ namespace MemberRegistry.view
     class StartView
     {
         private controller.UserController c_uc;
+        private view.MemberView v_mv;
+        private view.MemberListView v_mlv;
 
-        public StartView(controller.UserController a_uc)
+        public StartView(controller.UserController a_uc, view.MemberView a_mv, view.MemberListView a_mlv)
         {
             c_uc = a_uc;
+            v_mv = a_mv;
+            v_mlv = a_mlv;
         }
 
         public void DisplayStartMenu()
@@ -21,55 +25,31 @@ namespace MemberRegistry.view
             Console.WriteLine("Main Menu");
             Console.WriteLine("Press [1] - Add new member.");
             Console.WriteLine("Press [2] - List all members.");
-            Console.WriteLine("Press [0] - Quit Application.");
+            Console.WriteLine("Press [Esc] - Quit Application.");
 
-            // TODO: Requirements for future views
-            // Menu choices in list view
-            // - Compact List / Verbose List (toggle)
-            // - Delete member by ID (comfirm)
-            // - Read member by ID
-            // Menu choices in specific member view
-            // - Delete member
-            // - Update member information
-            // - Register a new boat
-            // - Delete boat by number in list (comfirm)
-            // - Update boat information
-        }
-
-        public void GetMainMenuResponse()
-        {
-            while (true)
+            do
             {
-                try
-                {
-                    int input = Convert.ToInt32(c_uc.GetKeyInput());
+                var input = Console.ReadKey();
 
-                    if (input < 0 || input > 2)
-                    {
-                        throw new Exception();
-                    }
+                Console.Clear();
 
-                    switch (input)
-                    {
-                        case 1:
-                            Console.Clear();
-                            c_uc.DoCreateMember();
-                            break;
-                        case 2:
-                            Console.Clear();
-                            c_uc.DoListMembers();
-                            break;
-                        case 0:
-                            Console.Clear();
-                            ExitConfirmation();
-                            break;
-                    }
-                }
-                catch (Exception)
+                switch (input.Key)
                 {
-                    DisplayStartMenu();
+                    case ConsoleKey.D1:
+                        v_mv.DisplayMemberRegistration();
+                        break;
+                    case ConsoleKey.D2:
+                        v_mlv.DisplayMemberList();
+                        v_mlv.DisplayMemberListMenu();
+                        break;
+                    case ConsoleKey.Escape:
+                        ExitConfirmation();
+                        break;
                 }
-            }
+
+                DisplayStartMenu();
+
+            } while (true);
         }
 
         public void ExitConfirmation()
@@ -78,21 +58,25 @@ namespace MemberRegistry.view
             Console.WriteLine("Press [y] - Yes");
             Console.WriteLine("Press [n] - No");
 
-            char input = char.Parse(c_uc.GetKeyInput());
-          
-            if (input.Equals('y'))
+            do
             {
-                Environment.Exit(0);
-            }
-            else if (input.Equals('n'))
-            {
-                DisplayStartMenu();
-            }
-            else
-            {
+                var input = Console.ReadKey();
+
+                switch (input.Key)
+                {
+                    case ConsoleKey.Y:
+                        Console.Clear();
+                        Environment.Exit(0);
+                        break;
+                    case ConsoleKey.N:
+                        DisplayStartMenu();
+                        break;
+                }
+
                 Console.Clear();
                 ExitConfirmation();
-            }  
+
+            } while (true);
         }
     }
 }

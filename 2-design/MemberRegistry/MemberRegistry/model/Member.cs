@@ -8,9 +8,9 @@ namespace MemberRegistry.model
 {
     class Member
     {
+        private int m_memberID;
         private string m_firstName;
         private string m_lastName;
-        private int m_memberID;
         private string m_ssn;
 
         //List<Boat> m_boats;

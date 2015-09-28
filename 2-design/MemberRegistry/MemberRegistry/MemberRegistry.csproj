@@ -48,7 +48,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="view\StartView.cs" />
-    <Compile Include="view\CreateMemberView.cs" />
+    <Compile Include="view\MemberView.cs" />
     <Compile Include="view\MemberListView.cs" />
   </ItemGroup>
   <ItemGroup>

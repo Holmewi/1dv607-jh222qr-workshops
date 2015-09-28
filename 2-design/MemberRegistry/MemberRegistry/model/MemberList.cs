@@ -23,11 +23,6 @@ namespace MemberRegistry.model
         public void Add(model.Member a_member)
         {
             m_members.Add(a_member);
-
-            foreach (model.Member member in m_members)
-            {
-                Console.WriteLine("{0}", member.FirstName);
-            }
         }
     }
 }

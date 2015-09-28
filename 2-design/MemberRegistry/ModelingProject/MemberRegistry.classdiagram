@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="3d236a9f-2f96-473d-afdf-ed8d645d9b04" name="MemberRegistry" linkedPackageId="78ff23a3-c060-4847-8f7a-d669b486b984" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="3d236a9f-2f96-473d-afdf-ed8d645d9b04" name="MemberRegistry" linkedPackageId="78ff23a3-c060-4847-8f7a-d669b486b984" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <packagedElements>
     <logicalClassDesignerModelHasPackages>
       <package Id="e819c703-2868-4f80-9641-df40086714ee" name="model">
@@ -94,7 +94,7 @@
             </class>
           </packageHasNamedElement>
           <packageHasNamedElement>
-            <class Id="d7be4254-90e9-4413-9eea-cfc53c8bf584" name="Registry" isAbstract="false" isLeaf="false" isActiveClass="false">
+            <class Id="d7be4254-90e9-4413-9eea-cfc53c8bf584" name="MemberList" isAbstract="false" isLeaf="false" isActiveClass="false">
               <elementDefinition Id="9b549b33-be40-4585-87e9-bf5a87d5cf36" />
               <targetEnds>
                 <association Id="e150b272-4010-448e-ae26-d36775b226d9" isDerived="false" sourceEndRoleName="" targetEndRoleName="m_members" isLeaf="false" isAbstract="false">
@@ -132,27 +132,36 @@
     <logicalClassDesignerModelHasPackages>
       <package Id="245393cf-dceb-48f9-bb43-41f4660a1723" name="view">
         <elementDefinition Id="ad5441a6-6b7e-4bb8-b770-88e7568976ef" />
+        <suppliersInternal>
+          <dependency Id="224375f7-0c48-4bce-9c6d-fad89fa917d7">
+            <classMoniker Id="681192fa-7d8a-4943-abb9-a17d704c56d8" LastKnownName="UserController" />
+            <elementDefinition Id="1a60c598-c883-45ef-8b4c-78c5ef4fea52" />
+          </dependency>
+        </suppliersInternal>
         <packagedElements>
           <packageHasNamedElement>
-            <Interface Id="8f3ba5f7-10ac-42a2-b5d5-1b148e588e31" name="NavigationView" isAbstract="false" isLeaf="false">
+            <Interface Id="8f3ba5f7-10ac-42a2-b5d5-1b148e588e31" name="StartView" isAbstract="false" isLeaf="false">
               <elementDefinition Id="ca75390e-d0d9-47e9-a481-f8a61c2a236a" />
               <suppliersInternal>
-                <dependency Id="bd179040-b649-41fa-b4ac-c6faf3ad66d8">
-                  <classMoniker Id="681192fa-7d8a-4943-abb9-a17d704c56d8" LastKnownName="UserController" />
-                  <elementDefinition Id="6ca61567-2169-4f59-b952-e9e746810ffb" />
+                <dependency Id="4ae2b42f-45b2-4530-b08b-0c383e0d0112">
+                  <interfaceMoniker Id="79cf7327-f6cb-4cde-b17d-5eef231239ea" LastKnownName="MemberView" />
+                  <elementDefinition Id="24c0df5d-b06d-4165-8593-ff9cc57ad82e" />
+                </dependency>
+                <dependency Id="248df3e3-ca84-4439-b7e5-dbb25ed35d5a">
+                  <interfaceMoniker Id="dc0594ff-b067-4088-aebe-1119184190bf" LastKnownName="MemberListView" />
+                  <elementDefinition Id="d8860477-8141-4c85-bb3c-189aae11cb8f" />
                 </dependency>
               </suppliersInternal>
             </Interface>
           </packageHasNamedElement>
           <packageHasNamedElement>
-            <Interface Id="79cf7327-f6cb-4cde-b17d-5eef231239ea" name="CreateMemberView" isAbstract="false" isLeaf="false">
+            <Interface Id="79cf7327-f6cb-4cde-b17d-5eef231239ea" name="MemberView" isAbstract="false" isLeaf="false">
               <elementDefinition Id="bbe11db0-a083-4ed8-ae6a-43a8256d68eb" />
-              <generalsInternal>
-                <generalization Id="1e013215-b735-446e-8d6e-7efc4b1607ad" isSubstitutable="false">
-                  <interfaceMoniker Id="8f3ba5f7-10ac-42a2-b5d5-1b148e588e31" LastKnownName="NavigationView" />
-                  <elementDefinition Id="1b298c1e-eeac-4aad-9c09-651706d122fa" />
-                </generalization>
-              </generalsInternal>
+            </Interface>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <Interface Id="dc0594ff-b067-4088-aebe-1119184190bf" name="MemberListView" isAbstract="false" isLeaf="false">
+              <elementDefinition Id="03cc76bd-448a-44a9-abcd-301b84257ee7" />
             </Interface>
           </packageHasNamedElement>
         </packagedElements>
@@ -171,8 +180,12 @@
                   <elementDefinition Id="32acd8e9-9651-4002-808a-407d95f05fa4" />
                 </dependency>
                 <dependency Id="30f98689-7b50-4b82-b8ee-9414ed1b31fe">
-                  <classMoniker Id="d7be4254-90e9-4413-9eea-cfc53c8bf584" LastKnownName="Registry" />
+                  <classMoniker Id="d7be4254-90e9-4413-9eea-cfc53c8bf584" LastKnownName="MemberList" />
                   <elementDefinition Id="d2fcc1f2-2ce5-4bdb-bffa-010fde261eac" />
+                </dependency>
+                <dependency Id="2219fb95-8fa3-45d8-a0d6-2a2feb84a108">
+                  <packageMoniker Id="245393cf-dceb-48f9-bb43-41f4660a1723" LastKnownName="view" />
+                  <elementDefinition Id="c214d042-ad7a-4196-8acf-33b7eb41d7ba" />
                 </dependency>
               </suppliersInternal>
             </class>
