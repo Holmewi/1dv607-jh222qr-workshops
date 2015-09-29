@@ -51,5 +51,16 @@ namespace MemberRegistry.model
         {
             get { return m_boats; }
         }
+
+        public void CreateBoat(int memberID, string _boatType, int _length)
+        {
+            model.Boat m_boat = new model.Boat(memberID, _boatType, _length);
+            m_boats.Add(m_boat);
+        }
+
+        public void DeleteBoat(model.Boat boat)
+        {
+            m_boats.Remove(boat);
+        }
     }
 }

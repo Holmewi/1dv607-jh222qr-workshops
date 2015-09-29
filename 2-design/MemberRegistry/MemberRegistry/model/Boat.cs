@@ -8,19 +8,32 @@ namespace MemberRegistry.model
 {
     class Boat
     {
-        private int m_lenght;
-        private string m_boatType;
+        private int _memberID;
+        private string _boatType;
+        private int _length;
 
-        public Boat(string a_boatType, int a_length)
+        public Boat(int memberID, string boatType, int length)
         {
-            m_boatType = a_boatType;
-            m_lenght = a_length;
+            _memberID = memberID;
+            _boatType = boatType;
+            _length = length;
         }
 
-        public string Boattype
+        public int MemberID
         {
-            get { return m_boatType; }
-            set { m_boatType = value; }
+            get { return _memberID; }
+            set { _memberID = value; }
+        }
+
+        public string BoatType
+        {
+            get { return _boatType; }
+            set { _boatType = value; }
+        }
+        public int Length
+        {
+            get { return _length; }
+            set { _length = value; }
         }
     }
 }

@@ -12,28 +12,23 @@ namespace MemberRegistry
         {
             controller.UserController uc = new controller.UserController();
 
-            view.BoatView bv = new view.BoatView(uc);
-            view.MemberView mv = new view.MemberView(uc, bv);
-            view.MemberListView mlv = new view.MemberListView(uc);
-            view.StartView sv = new view.StartView(uc, mv, mlv);
+            view.ConsoleView sv = new view.ConsoleView(uc);
 
-            uc.DoControl(sv, mv, mlv);
+            uc.DoControl(sv);
 
             // TODO: Requirements for future views
             // Menu choices in list view
+            //DONE - Create member
             //DONE - Compact List / Verbose List (toggle)
             //DONE - Delete member by ID (comfirm)
             //DONE - Read member by ID
+            //DONE - Add boats
             // Menu choices in specific member view
             // - Delete member
             // - Update member information
             // - Register a new boat
             // - Delete boat by number in list (comfirm)
             // - Update boat information
-
-            // TODO: Create member in memberlist model?
-            // TODO: Fix DRY in DisplayMemberList
-            // TODO: Flytta DisplayMemberInfo till MemberView
         }
     }
 }

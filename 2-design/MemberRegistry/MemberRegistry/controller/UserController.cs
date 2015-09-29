@@ -8,10 +8,7 @@ namespace MemberRegistry.controller
 {
     class UserController
     {
-        private view.StartView v_sv;
-        private view.MemberView v_mv;
-        private view.MemberListView v_mlv;
-
+        private view.ConsoleView v_sv;
         private model.MemberList m_ml;
 
         public UserController()
@@ -19,17 +16,16 @@ namespace MemberRegistry.controller
             m_ml = new model.MemberList();
         }
 
-        public void DoControl(view.StartView a_sv, view.MemberView a_mv, view.MemberListView a_mlv)
+        public void DoControl(view.ConsoleView a_sv)
         {
             v_sv = a_sv;
-            v_mv = a_mv;
-            v_mlv = a_mlv;
 
             // Test members for development
             // Remove before launch
             m_ml.CreateMember(m_ml.Members.Count() + 1000, "Dexter", "Morgan", "791103-4455");
             m_ml.CreateMember(m_ml.Members.Count() + 1000, "Joey", "Quinn", "750123-4455");
             m_ml.CreateMember(m_ml.Members.Count() + 1000, "Sergent", "Batista", "670130-4455");
+
 
             DoDisplayStart();
         }
@@ -106,12 +102,16 @@ namespace MemberRegistry.controller
             return null;
         }
 
-        public void CreateMember(string _firstName, string _lastName, string _ssn)
+        public void RegisterMember(int _memberID, string _firstName, string _lastName, string _ssn)
         {
-            // TODO: CONTROLLER VARIABELS
+            // TODO: CONTROL VARIABELS
+            m_ml.CreateMember(_memberID, _firstName, _lastName, _ssn);
+        }
 
-            int max = GetMemberList().Max(r => r.MemberID);
-            m_ml.CreateMember(max + 1, _firstName, _lastName, _ssn);
+        public void RegisterBoat(int _memberID, string _boatType, int _lenght)
+        {
+            // TODO: CONTROL VARIABELS
+            GetMemberByID(_memberID).CreateBoat(_memberID, _boatType, _lenght);
         }
 
         public bool DeleteMember(int memberID)
