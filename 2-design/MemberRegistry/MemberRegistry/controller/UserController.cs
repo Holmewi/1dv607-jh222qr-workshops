@@ -26,12 +26,10 @@ namespace MemberRegistry.controller
             v_mlv = a_mlv;
 
             // Test members for development
-            model.Member m_member1 = new model.Member(m_ml.Members.Count() + 1000, "Dexter", "Morgan", "791103-4455");
-            m_ml.Add(m_member1);
-            model.Member m_member2 = new model.Member(m_ml.Members.Count() + 1000, "Joey", "Quinn", "750123-4455");
-            m_ml.Add(m_member2);
-            model.Member m_member3 = new model.Member(m_ml.Members.Count() + 1000, "Sergent", "Batista", "670130-4455");
-            m_ml.Add(m_member3);
+            // Remove before launch
+            m_ml.CreateMember(m_ml.Members.Count() + 1000, "Dexter", "Morgan", "791103-4455");
+            m_ml.CreateMember(m_ml.Members.Count() + 1000, "Joey", "Quinn", "750123-4455");
+            m_ml.CreateMember(m_ml.Members.Count() + 1000, "Sergent", "Batista", "670130-4455");
 
             DoDisplayStart();
         }
@@ -39,6 +37,11 @@ namespace MemberRegistry.controller
         public void DoDisplayStart()
         {
             v_sv.DisplayStartMenu();
+        }
+
+        public void DoDisplayMemberRegistration()
+        {
+
         }
 
         public string GetStringInput(string _prompt)
@@ -105,20 +108,19 @@ namespace MemberRegistry.controller
 
         public void CreateMember(string _firstName, string _lastName, string _ssn)
         {
-            int memberID = m_ml.Members.Count() + 1000;
-            model.Member m_member = new model.Member(memberID, _firstName, _lastName, _ssn);
-            m_ml.Add(m_member);
+            // TODO: CONTROLLER VARIABELS
+
+            int max = GetMemberList().Max(r => r.MemberID);
+            m_ml.CreateMember(max + 1, _firstName, _lastName, _ssn);
         }
 
         public bool DeleteMember(int memberID)
         {
-            List<model.Member> members = GetMemberList();
-
-            foreach (model.Member member in members)
+            foreach (model.Member member in GetMemberList())
             {
                 if (member.MemberID == memberID)
                 {
-                    members.Remove(member);
+                    m_ml.DeleteMember(member);
                     return true;
                 }  
             }
@@ -128,6 +130,11 @@ namespace MemberRegistry.controller
         public List<model.Member> GetMemberList()
         {
             return m_ml.Members;
+        }
+
+        public List<model.Boat> GetBoatList(model.Member member)
+        {
+            return member.Boats;
         }
     }
 }

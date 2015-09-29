@@ -11,8 +11,9 @@ namespace MemberRegistry
         static void Main(string[] args)
         {
             controller.UserController uc = new controller.UserController();
-            
-            view.MemberView mv = new view.MemberView(uc);
+
+            view.BoatView bv = new view.BoatView(uc);
+            view.MemberView mv = new view.MemberView(uc, bv);
             view.MemberListView mlv = new view.MemberListView(uc);
             view.StartView sv = new view.StartView(uc, mv, mlv);
 
@@ -29,6 +30,10 @@ namespace MemberRegistry
             // - Register a new boat
             // - Delete boat by number in list (comfirm)
             // - Update boat information
+
+            // TODO: Create member in memberlist model?
+            // TODO: Fix DRY in DisplayMemberList
+            // TODO: Flytta DisplayMemberInfo till MemberView
         }
     }
 }

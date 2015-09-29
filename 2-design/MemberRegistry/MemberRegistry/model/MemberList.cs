@@ -20,9 +20,15 @@ namespace MemberRegistry.model
             get { return m_members; }
         }
 
-        public void Add(model.Member a_member)
+        public void CreateMember(int memberID, string _firstName, string _lastName, string _ssn)
         {
-            m_members.Add(a_member);
+            model.Member m_member = new model.Member(memberID, _firstName, _lastName, _ssn);
+            m_members.Add(m_member);
+        }
+
+        public void DeleteMember(model.Member member)
+        {
+            m_members.Remove(member);
         }
     }
 }

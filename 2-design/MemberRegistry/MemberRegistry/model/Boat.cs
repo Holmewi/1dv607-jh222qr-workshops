@@ -8,31 +8,19 @@ namespace MemberRegistry.model
 {
     class Boat
     {
-        public enum BoatType {
-            Sailboat,
-            Motorsailer,
-            KayakCanoe,
-            Other
-        }
+        private int m_lenght;
+        private string m_boatType;
 
-        private double m_lenght;
-        private BoatType m_boatType;
-
-        public Boat(BoatType a_boatType, double a_length) {
+        public Boat(string a_boatType, int a_length)
+        {
             m_boatType = a_boatType;
             m_lenght = a_length;
         }
 
-        public BoatType GetBoatType()
+        public string Boattype
         {
-            return m_boatType;
+            get { return m_boatType; }
+            set { m_boatType = value; }
         }
-
-        public void SetBoatType(BoatType value)
-        {
-            m_boatType = value;
-        }
-
-
     }
 }

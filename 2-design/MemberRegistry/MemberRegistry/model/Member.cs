@@ -13,7 +13,7 @@ namespace MemberRegistry.model
         private string m_lastName;
         private string m_ssn;
 
-        //List<Boat> m_boats;
+        private List<Boat> m_boats;
 
         public Member(int a_memberID, string a_firstName, string a_lastName, string a_ssn) 
         {
@@ -21,12 +21,12 @@ namespace MemberRegistry.model
             m_firstName = a_firstName;
             m_lastName = a_lastName;
             m_ssn = a_ssn;
+            m_boats = new List<model.Boat>();
         }
 
         public int MemberID
         {
             get { return m_memberID; }
-            set { m_memberID = value; }
         }
 
         public string FirstName
@@ -45,6 +45,11 @@ namespace MemberRegistry.model
         {
             get { return m_ssn; }
             set { m_ssn = value;  }
+        }
+
+        public List<model.Boat> Boats
+        {
+            get { return m_boats; }
         }
     }
 }
