@@ -52,10 +52,15 @@ namespace MemberRegistry.model
             get { return m_boats; }
         }
 
-        public void CreateBoat(int memberID, string _boatType, int _length)
+        public void CreateBoat(int memberID, string boatType, int length)
         {
-            model.Boat m_boat = new model.Boat(memberID, _boatType, _length);
+            model.Boat m_boat = new model.Boat(memberID, boatType, length);
             m_boats.Add(m_boat);
+        }
+
+        public void UpdateBoat(model.Boat boat, string boatType, int length) {
+            boat.BoatType = boatType;
+            boat.Length = length;
         }
 
         public void DeleteBoat(model.Boat boat)

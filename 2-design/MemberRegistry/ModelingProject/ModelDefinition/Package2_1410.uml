@@ -1,55 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
   dslVersion="1.0.0.0"
   Id="ad5441a6-6b7e-4bb8-b770-88e7568976ef"
   name="view" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
-  <suppliersInternal>
-    <dependency
-      Id="1a60c598-c883-45ef-8b4c-78c5ef4fea52">
-      <classMoniker
-        Id="df13d2a1-cec1-4e51-b217-ce9cfba5b3ef"
-        LastKnownName="UserController"
-        LastKnownLocation="Package3_1410.uml" />
-    </dependency>
-  </suppliersInternal>
   <packagedElements>
     <packageHasNamedElement>
       <Interface
         Id="ca75390e-d0d9-47e9-a481-f8a61c2a236a"
-        name="StartView"
+        name="ConsoleView"
         isAbstract="false"
         isLeaf="false">
         <suppliersInternal>
           <dependency
-            Id="24c0df5d-b06d-4165-8593-ff9cc57ad82e">
-            <interfaceMoniker
-              Id="bbe11db0-a083-4ed8-ae6a-43a8256d68eb"
-              LastKnownName="MemberView"
-              LastKnownLocation="Package2_1410.uml" />
-          </dependency>
-          <dependency
-            Id="d8860477-8141-4c85-bb3c-189aae11cb8f">
-            <interfaceMoniker
-              Id="03cc76bd-448a-44a9-abcd-301b84257ee7"
-              LastKnownName="MemberListView"
-              LastKnownLocation="Package2_1410.uml" />
+            Id="1a60c598-c883-45ef-8b4c-78c5ef4fea52">
+            <classMoniker
+              Id="df13d2a1-cec1-4e51-b217-ce9cfba5b3ef"
+              LastKnownName="UserController"
+              LastKnownLocation="Package3_1410.uml" />
           </dependency>
         </suppliersInternal>
       </Interface>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <Interface
-        Id="bbe11db0-a083-4ed8-ae6a-43a8256d68eb"
-        name="MemberView"
-        isAbstract="false"
-        isLeaf="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <Interface
-        Id="03cc76bd-448a-44a9-abcd-301b84257ee7"
-        name="MemberListView"
-        isAbstract="false"
-        isLeaf="false" />
     </packageHasNamedElement>
   </packagedElements>
 </package>
