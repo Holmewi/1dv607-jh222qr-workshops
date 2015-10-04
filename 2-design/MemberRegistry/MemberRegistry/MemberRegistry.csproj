@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\DataController.cs" />
     <Compile Include="controller\UserController.cs" />
     <Compile Include="model\Boat.cs" />
     <Compile Include="model\Member.cs" />

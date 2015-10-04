@@ -11,7 +11,7 @@ namespace MemberRegistry.model
         private int m_memberID;
         private string m_firstName;
         private string m_lastName;
-        private string m_ssn;
+        private string m_ssn;   
 
         private List<Boat> m_boats;
 
@@ -21,6 +21,7 @@ namespace MemberRegistry.model
             m_firstName = a_firstName;
             m_lastName = a_lastName;
             m_ssn = a_ssn;
+
             m_boats = new List<model.Boat>();
         }
 

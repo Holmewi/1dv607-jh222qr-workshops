@@ -11,12 +11,15 @@ namespace MemberRegistry.controller
     {
         private view.ConsoleView v_sv;
         private model.MemberList m_ml;
+        private controller.DataController c_dc;
+
         Regex nameRegex = new Regex(@"^[a-zA-Z]+(([\'\,\.\-][a-zA-Z])?[a-zA-Z]*)*$");
-        Regex ssnRegex = new Regex(@"^(((20)((0[0-9])|(1[0-1])))|(([1][^0-8])?\d{2}))((0[1-9])|1[0-2])((0[1-9])|(2[0-9])|(3[01]))[-]?\d{4}$");
+        Regex ssnRegex = new Regex(@"\b(?:19|20)?\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[-+]?\d{4}\b");
 
         public UserController()
         {
             m_ml = new model.MemberList();
+            c_dc = new controller.DataController(m_ml);
         }
 
         public void DoControl(view.ConsoleView a_sv)
@@ -26,14 +29,15 @@ namespace MemberRegistry.controller
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.BackgroundColor = ConsoleColor.Black;
 
-
             // Test members for development
             // Remove before launch
+            /*
             m_ml.CreateMember(m_ml.Members.Count() + 1000, "Dexter", "Morgan", "791103-4455");
             m_ml.CreateMember(m_ml.Members.Count() + 1000, "Joey", "Quinn", "750123-4455");
             m_ml.CreateMember(m_ml.Members.Count() + 1000, "Sergent", "Batista", "670130-4455");
-
-
+            c_dc.UpdateDataStorage();
+             */
+            c_dc.UpdateMemberList();
             DoDisplayStart();
         }
 
@@ -129,23 +133,18 @@ namespace MemberRegistry.controller
         public void RegisterMember(int memberID, string firstName, string lastName, string ssn)
         {
             m_ml.CreateMember(memberID, firstName, lastName, ssn);
+            c_dc.UpdateDataStorage();
         }
 
         public model.Member GetMemberByID(int memberID)
         {
-            foreach (model.Member member in GetMemberList())
-            {
-                if (member.MemberID == memberID)
-                {
-                    return member;
-                }
-            }
-            return null;
+            return m_ml.GetMember(memberID);
         }
 
         public void EditMemberInfo(model.Member member, string firstName, string lastName, string ssn)
         {
             m_ml.UpdateMember(member, firstName, lastName, ssn);
+            c_dc.UpdateDataStorage();
         }
 
         public bool RemoveMemberFromList(int memberID)
@@ -155,6 +154,7 @@ namespace MemberRegistry.controller
                 if (member.MemberID == memberID)
                 {
                     m_ml.DeleteMember(member);
+                    c_dc.UpdateDataStorage();
                     return true;
                 }
             }
@@ -163,8 +163,8 @@ namespace MemberRegistry.controller
 
         public void RegisterBoat(int memberID, string boatType, int length)
         {
-            // TODO: CONTROL VARIABELS
             GetMemberByID(memberID).CreateBoat(memberID, boatType, length);
+            c_dc.UpdateDataStorage();
         }
 
         public model.Boat GetBoat(model.Member member, int i)
@@ -176,11 +176,13 @@ namespace MemberRegistry.controller
         public void EditBoatInfo(model.Member member, int i, string boatType, int length)
         {
             member.UpdateBoat(GetBoat(member, i), boatType, length);
+            c_dc.UpdateDataStorage();
         }
 
         public void RemoveBoatFromList(model.Member member, int i)
         {
             member.DeleteBoat(GetBoat(member, i - 1));
+            c_dc.UpdateDataStorage();
         }
       
 

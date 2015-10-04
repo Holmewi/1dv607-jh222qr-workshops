@@ -15,6 +15,7 @@ namespace MemberRegistry.view
         private static string vlist = "Verbose";
         private string listType = clist;
         private string _message = null;
+        private DateTime today = DateTime.Today;
 
         private int _memberID;
         private string _firstName;
@@ -39,11 +40,10 @@ namespace MemberRegistry.view
 
         public void DisplayHeader()
         {
-            Console.WriteLine("");
-            Console.WriteLine("THE HAPPY PIRATE");
-            Console.WriteLine("Member & Boat Registry");
-            Console.WriteLine("__________________________________________");
-            Console.WriteLine("");
+            Console.WriteLine("{0,54}", today.ToString("yyyy-MM-dd"));
+            Console.WriteLine("\t{0,-34}", "THE HAPPY PIRATE");
+            Console.WriteLine("\t{0,-34}", "- Member & Boat Registry");
+            Console.WriteLine("________________________________________________________\n");
         }
 
         public void DisplayStartMenu()
@@ -54,18 +54,16 @@ namespace MemberRegistry.view
 
             if (_message != null)
             {
-                Console.WriteLine("");
-                Console.WriteLine("{0}", _message);
+                Console.WriteLine("\n   * {0}", _message);
             }
 
-            
-            Console.WriteLine("--- Start Menu ---------------------------");
-            Console.WriteLine("");
-            Console.WriteLine("Press [1] - Create New Member");
-            Console.WriteLine("Press [2] - View Member Information");
-            Console.WriteLine("Press [3] - Delete Member");
-            Console.WriteLine("Press [4] - Display {0} Member List", listType); ;
-            Console.WriteLine("Press [Esc] - Quit Application");
+            Console.WriteLine("________________________________________________________\n");
+            Console.WriteLine("--- Start Menu -----------------------------------------\n");
+            Console.WriteLine("   Press [1] - Create New Member");
+            Console.WriteLine("   Press [2] - View Member Information");
+            Console.WriteLine("   Press [3] - Delete Member");
+            Console.WriteLine("   Press [4] - Display {0} Member List", listType); ;
+            Console.WriteLine("   Press [Esc] - Quit Application");
 
             _message = null;
             _boatType = null;
@@ -101,17 +99,22 @@ namespace MemberRegistry.view
         {
             Console.Clear();
             DisplayHeader();
-            Console.WriteLine("--- Fill in member information -----------");
-            Console.WriteLine("");
+            Console.WriteLine("------------------ Create New Member -------------------\n");
+            Console.WriteLine("\tFill in member information.");
             if (_message != null)
             {
-                Console.WriteLine("{0}", _message);
-                Console.WriteLine("");
+                Console.WriteLine("\n\t   * {0}", _message);
             }
-            _memberID = c_uc.GetMemberList().Max(r => r.MemberID) + 1;
-            _firstName = c_uc.GetStringInput("First name: ", true);
-            _lastName = c_uc.GetStringInput("Last name: ", true);
-            _ssn = c_uc.GetStringInput("Social Security Number (10 digits): ", false);
+            if (c_uc.GetMemberList().Count() <= 0) {
+                _memberID = 1000;
+            }
+            else {
+                _memberID = c_uc.GetMemberList().Max(r => r.MemberID) + 1;
+            }
+
+            _firstName = c_uc.GetStringInput("\tFirst name: ", true);
+            _lastName = c_uc.GetStringInput("\tLast name: ", true);
+            _ssn = c_uc.GetStringInput("\tSocial Security Number: ", false);
 
             _message = null;
 
@@ -120,14 +123,17 @@ namespace MemberRegistry.view
 
         public void DisplaySaveMemberConfirmation()
         {
-            Console.WriteLine("");
-            Console.WriteLine("__________________________________________");
-            Console.WriteLine("--- Please confirm to save the member ----");
-            Console.WriteLine("");
-            Console.WriteLine("Press [1] - Finish member registration");
-            Console.WriteLine("Press [2] - Add boat to member (Member gets registred)");
-            Console.WriteLine("Press [3] - Redo registration");
-            Console.WriteLine("Press [ESC] - Cancel registration");
+            Console.Clear();
+            DisplayHeader();
+
+            Console.WriteLine("------------------ Create New Member -------------------\n");
+            Console.WriteLine("\tName: {0} {1}\n\tSSN: {2}", _firstName, _lastName, _ssn);
+            Console.WriteLine("\n________________________________________________________\n");
+            Console.WriteLine("--- Please confirm to save the member ------------------\n");
+            Console.WriteLine("   Press [1] - Register member");
+            Console.WriteLine("   Press [2] - Register member and add boat");
+            Console.WriteLine("   Press [3] - Redo registration");
+            Console.WriteLine("   Press [ESC] - Cancel registration");
 
             do
             {
@@ -137,12 +143,12 @@ namespace MemberRegistry.view
                 {
                     case ConsoleKey.D1:
                         c_uc.RegisterMember(_memberID, _firstName, _lastName, _ssn);
-                        _message = "Member registered succesfully!";
+                        _message = "Member registered successfully!";
                         DisplayStartMenu();
                         break;
                     case ConsoleKey.D2:
                         c_uc.RegisterMember(_memberID, _firstName, _lastName, _ssn);
-                        _message = "Member registered succesfully!";
+                        _message = "Member registered successfully!";
                         DisplayBoatRegistration(c_uc.GetMemberByID(_memberID), true);
                         break;
                     case ConsoleKey.D3:
@@ -150,7 +156,7 @@ namespace MemberRegistry.view
                         DisplayMemberRegistrationForm();
                         break;
                     case ConsoleKey.Escape:
-                        _message = "The member did not get saved...";
+                        _message = "The member was not saved";
                         DisplayStartMenu();
                         break;
                 }
@@ -162,18 +168,16 @@ namespace MemberRegistry.view
             Console.Clear();
             DisplayHeader();
             DisplayMemberInfo(member);
-
-            Console.WriteLine("--- Fill in boat information -------------");
-            Console.WriteLine("");
+            Console.WriteLine("\n--------------- Register boat to member ----------------\n");
             do
             {
                 if (_boatType == null)
                 {
-                    Console.WriteLine("Select boat type");
-                    Console.WriteLine("Press {0} - Sailboat:", (int)BoatType.Sailboat);
-                    Console.WriteLine("Press {0} - Motorsailer:", (int)BoatType.Motorsailer);
-                    Console.WriteLine("Press {0} - Kayak / Canoe:", (int)BoatType.KayakCanoe);
-                    Console.WriteLine("Press {0} - Other:", (int)BoatType.Other);
+                    Console.WriteLine("\tSelect boat type:");
+                    Console.WriteLine("\t   Press {0} - Sailboat:", (int)BoatType.Sailboat);
+                    Console.WriteLine("\t   Press {0} - Motorsailer:", (int)BoatType.Motorsailer);
+                    Console.WriteLine("\t   Press {0} - Kayak / Canoe:", (int)BoatType.KayakCanoe);
+                    Console.WriteLine("\t   Press {0} - Other:", (int)BoatType.Other);
                 
                     var input = Console.ReadKey(true);
 
@@ -196,22 +200,24 @@ namespace MemberRegistry.view
                     DisplayBoatRegistration(member, fromMemberRegistration);
                 }
 
-                Console.WriteLine("Boat Type: {0}", _boatType);
-                _boatLength = c_uc.GetIntInput("Boat Lenght (cm): ");
-
+                Console.WriteLine("\tBoat Type: {0}", _boatType);
+                _boatLength = c_uc.GetIntInput("\tBoat Lenght (cm): ");
+                if (_message != null)
+                {
+                    Console.WriteLine("\n\t   * {0}", _message);
+                }
                 DisplaySaveBoatConfirmation(member, fromMemberRegistration);
             } while (true);
         }
 
         public void DisplaySaveBoatConfirmation(model.Member member, bool fromMemberRegistration)
         {
-            Console.WriteLine("");
-            Console.WriteLine("Please confirm to register the boat.");
-            Console.WriteLine("============================================");
-            Console.WriteLine("Press [1] - Finish boat registration");
-            Console.WriteLine("Press [2] - Add another boat to member");
-            Console.WriteLine("Press [3] - Redo the boat registration");
-            Console.WriteLine("Press [ESC] - Cancel boat registration");
+            Console.WriteLine("\n________________________________________________________\n");
+            Console.WriteLine("--- Please confirm to register the boat ----------------\n");
+            Console.WriteLine("   Press [1] - Finish boat registration");
+            Console.WriteLine("   Press [2] - Add another boat to member");
+            Console.WriteLine("   Press [3] - Redo the boat registration");
+            Console.WriteLine("   Press [ESC] - Cancel boat registration");
 
             do
             {
@@ -223,13 +229,13 @@ namespace MemberRegistry.view
                         c_uc.RegisterBoat(member.MemberID, _boatType, _boatLength);
                         if (fromMemberRegistration)
                         {
-                            _message = "Member and boat registered succesfully.";
+                            _message = "Member and boat registered successfully!";
                             DisplayStartMenu();
                         }
                         else
                         {
                             Console.Clear();
-                            _message = "Boat registered succesfully.";
+                            _message = "Boat registered succesfully!";
                             DisplayMemberInfo(member);
                             DisplayMemberInfoMenu(member);
                         }
@@ -237,26 +243,25 @@ namespace MemberRegistry.view
                         break;
                     case ConsoleKey.D2:
                         c_uc.RegisterBoat(member.MemberID, _boatType, _boatLength);
-                        _message = "Boat added succesfully...";
+                        _message = "Boat added succesfully!";
                         _boatType = null;
                         DisplayBoatRegistration(member, fromMemberRegistration);
                         break;
                     case ConsoleKey.D3:
-                        Console.WriteLine("Please try again...");
-                        Console.WriteLine("");
+                        _message = "Please try again...";
                         _boatType = null;
                         DisplayBoatRegistration(member, fromMemberRegistration);
                         break;
                     case ConsoleKey.Escape:
                         if (fromMemberRegistration)
                         {
-                            _message = "Created a member with no registered boats...";
+                            _message = "Member registered with no boats.";
                             DisplayStartMenu();
                         }
                         else
                         {
                             Console.Clear();
-                            _message = "The last boat did not register.";
+                            _message = "The boat was not registered.";
                             DisplayMemberInfo(member);
                             DisplayMemberInfoMenu(member);
                         }
@@ -267,33 +272,55 @@ namespace MemberRegistry.view
 
         public void DisplayMemberList()
         {
-            if (compactList)
+            if (c_uc.GetMemberList().Count() <= 0)
             {
-                listType = vlist;
-                Console.WriteLine("{0,4} {1,-26} {2,-16} {3}", "ID", "Name", "Personal Number", "Boats");
-                Console.WriteLine("--- ID ---- Name ---------------------");
-                foreach (model.Member member in c_uc.GetMemberList())
-                {
-                    Console.WriteLine("{0,10}\t{1}, {2}", member.MemberID, member.LastName, member.FirstName);
-                }
+                Console.WriteLine("\tNo members in registry...");
             }
             else
             {
-                listType = clist;
-                foreach (model.Member member in c_uc.GetMemberList())
+                if (compactList)
                 {
-                    Console.WriteLine("..........................................");
-                    Console.WriteLine("   ID: {0}", member.MemberID);
-                    Console.WriteLine("   Name: {0} {1}", member.FirstName, member.LastName);
-                    Console.WriteLine("   Social Security Number: {0}", member.SSN);
-                    foreach (model.Boat boat in member.Boats)
+                    listType = vlist;
+                    Console.WriteLine("--------------------- Compact List ---------------------\n");
+                    Console.WriteLine("\t{0,-6} {1,-27} {2}", "ID", "Name", "Boats");
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.WriteLine("\t{0,-6} {1,-27} {2}", "----", "------------------------", "-----");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    foreach (model.Member member in c_uc.GetMemberList())
                     {
-                        Console.WriteLine("Boat: {0} {1}", boat.BoatType, boat.Length);
+                        string fullName = member.LastName + ", " + member.FirstName;
+                        Console.WriteLine("\t{0,-6} {1,-27} {2}", member.MemberID, fullName, member.Boats.Count());
+                    }
+                }
+                else
+                {
+                    listType = clist;
+                    Console.WriteLine("--------------------- Verbose List ---------------------\n");
+                    foreach (model.Member member in c_uc.GetMemberList())
+                    {
+
+                        Console.WriteLine("\t{0,-7} {1}", "ID:", member.MemberID);
+                        Console.WriteLine("\t{0,-7} {1} {2}", "Name:", member.FirstName, member.LastName);
+                        Console.WriteLine("\t{0,-7} {1}", "SSN:", member.SSN);
+                        if (member.Boats.Count() > 0)
+                        {
+                            int i = 1;
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.WriteLine("\t   __ Registered boats ______________");
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            foreach (model.Boat boat in member.Boats)
+                            {
+                                Console.WriteLine("\t   Boat [{0}] - {1} {2}", i, boat.BoatType, boat.Length);
+                                i++;
+                            }
+                        }
+                        
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        Console.WriteLine("\t------------------------------------------");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
                     }
                 }
             }
-            Console.WriteLine("__________________________________________");
-            Console.WriteLine("");
         }
 
         public void ToggleListView()
@@ -317,7 +344,7 @@ namespace MemberRegistry.view
                 DisplayMemberList();
                 while (!Console.KeyAvailable)
                 {
-                    _memberID = c_uc.GetIntInput("Enter ID to view a member: ");
+                    _memberID = c_uc.GetIntInput("\n\tEnter ID to view a member: ");
                     if (c_uc.GetMemberByID(_memberID) != null)
                     {
                         Console.Clear();
@@ -332,9 +359,8 @@ namespace MemberRegistry.view
                 Console.Clear();
                 DisplayHeader();
                 DisplayMemberList();
-                Console.WriteLine("The Member ID [{0}] did not exist.\n", _memberID);
-                Console.WriteLine("Press [ESC] to go back or [Enter] to try again.");
-                Console.WriteLine("");
+                Console.WriteLine("\n\tThe Member ID \"{0}\" did not exist.\n", _memberID);
+                Console.WriteLine("   Press [ESC] to go back or [Enter] to try again.");
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
             DisplayStartMenu();
         }
@@ -343,45 +369,46 @@ namespace MemberRegistry.view
         {
             Console.Clear();
             DisplayHeader();
-            Console.WriteLine("ID: {0}", member.MemberID);
-            Console.WriteLine("Name: {0} {1}", member.FirstName, member.LastName);
-            Console.WriteLine("Social Security Number: {0}", member.SSN);
-            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("\t__ Member info ___________________________");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\t{0,-7} {1}", "ID:", member.MemberID);
+            Console.WriteLine("\t{0,-7} {1} {2}", "Name:", member.FirstName, member.LastName);
+            Console.WriteLine("\t{0,-7} {1}", "SSN:", member.SSN);
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("\n\t   __ Registered boats ______________");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             if (member.Boats.Count() > 0)
             {
                 int i = 1;
                 foreach (model.Boat boat in member.Boats)
                 {
-                    Console.WriteLine("Boat {0}: {1} {2}", i, boat.BoatType, boat.Length);
+                    Console.WriteLine("\t   Boat [{0}] - {1} {2}", i, boat.BoatType, boat.Length);
                     i++;
                 }
             }
             else
             {
-                Console.WriteLine("No boats registered to member");
+                Console.WriteLine("\t   No boats registered to member");
             }
 
             if (_message != null)
             {
-                Console.WriteLine("");
-                Console.WriteLine("{0}", _message);
+                Console.WriteLine("\n   * {0}", _message);
             }
-
-            Console.WriteLine("");
-            Console.WriteLine("__________________________________________");
-            Console.WriteLine("");
         }
 
         public void DisplayMemberInfoMenu(model.Member member)
         {
-            Console.WriteLine("Press [1] - Edit name");
-            Console.WriteLine("Press [2] - Edit social security number");
-            Console.WriteLine("Press [3] - Register new boat to member");
-            Console.WriteLine("Press [4] - Edit boat from list");
-            Console.WriteLine("Press [5] - Delete boat from list");
-            Console.WriteLine("Press [6] - Delete member");
-            Console.WriteLine("Press [Esc] - Back to main menu");
-            Console.WriteLine("");
+            Console.WriteLine("\n________________________________________________________\n");
+            Console.WriteLine("--- Member menu ----------------------------------------\n");
+            Console.WriteLine("   Press [1] - Edit name");
+            Console.WriteLine("   Press [2] - Edit social security number");
+            Console.WriteLine("   Press [3] - Register new boat to member");
+            Console.WriteLine("   Press [4] - Edit boat from list");
+            Console.WriteLine("   Press [5] - Delete boat from list");
+            Console.WriteLine("   Press [6] - Delete member");
+            Console.WriteLine("   Press [Esc] - Back to main menu");
             
             _message = null;
             _boatType = null;
@@ -395,10 +422,10 @@ namespace MemberRegistry.view
                     case ConsoleKey.D1:
                         Console.Clear();
                         DisplayMemberInfo(member);
-                        _firstName = c_uc.GetStringInput("Set new first name: ", true);
-                        _lastName = c_uc.GetStringInput("Set new last name: ", true);
+                        _firstName = c_uc.GetStringInput("\tSet new first name: ", true);
+                        _lastName = c_uc.GetStringInput("\tSet new last name: ", true);
                         c_uc.EditMemberInfo(member, _firstName, _lastName, member.SSN);
-                        _message = "Name update succesfully!";
+                        _message = "Name updated successfully!";
                         Console.Clear();
                         DisplayMemberInfo(member);
                         DisplayMemberInfoMenu(member);
@@ -406,9 +433,9 @@ namespace MemberRegistry.view
                     case ConsoleKey.D2:
                         Console.Clear();
                         DisplayMemberInfo(member);
-                        _ssn = c_uc.GetStringInput("Set new Social Security Number (10 digits): ", false);
+                        _ssn = c_uc.GetStringInput("\tSet new Social Security Number (10 digits): ", false);
                         c_uc.EditMemberInfo(member, member.FirstName, member.LastName, _ssn);
-                        _message = "Social security number update succesfully!";
+                        _message = "Social security number updated successfully!";
                         Console.Clear();
                         DisplayMemberInfo(member);
                         DisplayMemberInfoMenu(member);
@@ -445,9 +472,7 @@ namespace MemberRegistry.view
                 
                     if (member.Boats.Count() <= 0)
                     {
-                        Console.WriteLine("The member has no boats.");
-                        Console.WriteLine("Press [ESC] to go back.");
-                        
+                        Console.WriteLine("\n   The member has no boats. Press [ESC] to go back.");                
                     }
                     else
                     {
@@ -458,15 +483,15 @@ namespace MemberRegistry.view
                                 Console.WriteLine("{0}", _message);
                                 _message = null;
                             }
-                            
-                            int selectedBoat = c_uc.GetIntInput("Enter boat in list: ");
+
+                            int selectedBoat = c_uc.GetIntInput("\n\tEnter number from list: ");
 
                             if (selectedBoat > 0 && selectedBoat <= member.Boats.Count())
                             {
                                 if (isDeleteBoat)
                                 {
                                     c_uc.RemoveBoatFromList(member, selectedBoat);
-                                    _message = "The boat deleted successfully.";
+                                    _message = "The boat was deleted!";
                                     DisplayMemberInfo(member);
                                     DisplayMemberInfoMenu(member);
                                 }
@@ -487,19 +512,21 @@ namespace MemberRegistry.view
             DisplayMemberInfoMenu(member);
         }
 
-        public void DisplayEditBoatInfo(model.Member member, int selectedBoatToEdit)
+        public void DisplayEditBoatInfo(model.Member member, int select)
         {
-            Console.WriteLine("--- Fill in new boat information ---------");
-            Console.WriteLine("");
+            Console.Clear();
+            DisplayMemberInfo(member);
+            Console.WriteLine("\n--- Edit boat information ------------------------------\n");
+            Console.WriteLine("\tBoat to edit: {0} {1}\n", member.Boats[select - 1].BoatType, member.Boats[select - 1].Length);
             do
             {
                 if (_boatType == null)
                 {
-                    Console.WriteLine("Select boat type");
-                    Console.WriteLine("Press {0} - Sailboat:", (int)BoatType.Sailboat);
-                    Console.WriteLine("Press {0} - Motorsailer:", (int)BoatType.Motorsailer);
-                    Console.WriteLine("Press {0} - Kayak / Canoe:", (int)BoatType.KayakCanoe);
-                    Console.WriteLine("Press {0} - Other:", (int)BoatType.Other);
+                    Console.WriteLine("\tSelect boat type:");
+                    Console.WriteLine("\t   Press {0} - Sailboat:", (int)BoatType.Sailboat);
+                    Console.WriteLine("\t   Press {0} - Motorsailer:", (int)BoatType.Motorsailer);
+                    Console.WriteLine("\t   Press {0} - Kayak / Canoe:", (int)BoatType.KayakCanoe);
+                    Console.WriteLine("\t   Press {0} - Other:", (int)BoatType.Other);
 
                     var input = Console.ReadKey(true);
 
@@ -519,13 +546,13 @@ namespace MemberRegistry.view
                             break;
                     }
 
-                    DisplayEditBoatInfo(member, selectedBoatToEdit);
+                    DisplayEditBoatInfo(member, select);
                 }
 
-                Console.WriteLine("Boat Type: {0}", _boatType);
-                _boatLength = c_uc.GetIntInput("Boat Lenght (cm): ");
+                Console.WriteLine("\tBoat Type: {0}", _boatType);
+                _boatLength = c_uc.GetIntInput("\tBoat Lenght (cm): ");
 
-                c_uc.EditBoatInfo(member, selectedBoatToEdit - 1, _boatType, _boatLength);
+                c_uc.EditBoatInfo(member, select - 1, _boatType, _boatLength);
                 _message = "Boat updated succesfully!";
                 DisplayMemberInfo(member);
                 DisplayMemberInfoMenu(member);
@@ -542,7 +569,7 @@ namespace MemberRegistry.view
                 DisplayMemberList();
                 while (!Console.KeyAvailable)
                 {
-                    _memberID = c_uc.GetIntInput("Enter ID to delete a member: ");
+                    _memberID = c_uc.GetIntInput("\n\tEnter ID to delete a member: ");
                     if (c_uc.GetMemberByID(_memberID) != null)
                     {
                         DisplayDeleteConfirmation(_memberID);
@@ -555,9 +582,8 @@ namespace MemberRegistry.view
                 Console.Clear();
                 DisplayHeader();
                 DisplayMemberList();
-                Console.WriteLine("The Member ID [{0}] did not exist.", _memberID);
-                Console.WriteLine("Press [ESC] to go back or [Enter] to try again.");
-                Console.WriteLine("");
+                Console.WriteLine("\n\tThe Member ID \"{0}\" did not exist.", _memberID);
+                Console.WriteLine("   Press [ESC] to go back or [Enter] to try again.");
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
             DisplayStartMenu();
         }
@@ -566,14 +592,12 @@ namespace MemberRegistry.view
         {
             Console.Clear();
             DisplayHeader();
-            Console.WriteLine("Please confirm to delete the member:\n");
-            Console.WriteLine("{0} {1} {2} {3}\n",
-                                            c_uc.GetMemberByID(memberID).MemberID,
-                                            c_uc.GetMemberByID(memberID).FirstName,
-                                            c_uc.GetMemberByID(memberID).LastName,
-                                            c_uc.GetMemberByID(memberID).SSN);
-            Console.WriteLine("Press [y] - Delete member");
-            Console.WriteLine("Press [n] - Cancel");
+            Console.WriteLine("   Please confirm to delete the member:\n");
+            Console.WriteLine("\t{0,-7} {1}", "ID:", c_uc.GetMemberByID(memberID).MemberID);
+            Console.WriteLine("\t{0,-7} {1} {2}", "Name:", c_uc.GetMemberByID(memberID).FirstName, c_uc.GetMemberByID(memberID).LastName);
+            Console.WriteLine("\t{0,-7} {1}", "SSN:", c_uc.GetMemberByID(memberID).SSN);
+            Console.WriteLine("\n\tPress [y] - Delete member");
+            Console.WriteLine("\tPress [n] - Cancel");
 
             do
             {
@@ -587,12 +611,12 @@ namespace MemberRegistry.view
                         case ConsoleKey.Y:
                             Console.Clear();
                             c_uc.RemoveMemberFromList(memberID);
-                            _message = "Deleted member succesfully.";
+                            _message = "Deleted member succesfully!";
                             DisplayStartMenu();
                             break;
                         case ConsoleKey.N:
                             Console.Clear();
-                            _message = "The Member did not get deleted...";
+                            _message = "The Member was not deleted.";
                             DisplayStartMenu();            
                             break;
                     }
@@ -603,9 +627,10 @@ namespace MemberRegistry.view
         public void ExitConfirmation()
         {
             Console.Clear();
-            Console.WriteLine("Are you sure you want to quit the application?");
-            Console.WriteLine("Press [y] - Yes");
-            Console.WriteLine("Press [n] - No");
+            DisplayHeader();
+            Console.WriteLine("   Are you sure you want to quit the application?\n");
+            Console.WriteLine("\tPress [y] - Yes");
+            Console.WriteLine("\tPress [n] - No");
 
             do
             {
