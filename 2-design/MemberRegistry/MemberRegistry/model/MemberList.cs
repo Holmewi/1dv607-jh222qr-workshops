@@ -8,27 +8,27 @@ namespace MemberRegistry.model
 {
     class MemberList
     {
-        private List<model.Member> m_members;      
+        private List<model.Member> _members;      
 
         public MemberList()
         {
-            m_members = new List<model.Member>(); 
+            _members = new List<model.Member>(); 
         }
 
         public List<model.Member> Members
         {
-            get { return m_members; }
+            get { return _members; }
         }
 
         public void CreateMember(int memberID, string _firstName, string _lastName, string _ssn)
         {       
                 model.Member m_member = new model.Member(memberID, _firstName, _lastName, _ssn);
-                m_members.Add(m_member);
+                _members.Add(m_member);
         }
 
         public model.Member GetMember(int memberID)
         {
-            foreach (model.Member member in m_members)
+            foreach (model.Member member in _members)
             {
                 if (member.MemberID == memberID)
                 {
@@ -47,7 +47,7 @@ namespace MemberRegistry.model
 
         public void DeleteMember(model.Member member)
         {
-            m_members.Remove(member);
+            _members.Remove(member);
         }
     }
 }

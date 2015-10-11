@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="9c978e56-9402-4a85-b98c-3c407232e517"
   name="model" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -22,14 +22,7 @@
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <enumerationMoniker
-                Id="c3c6071b-8555-493f-870d-8afbe4fb658d"
-                LastKnownName="BoatType"
-                LastKnownLocation="Package_1410.uml" />
-            </type_NamedElement>
-          </property>
+            isComposite="false" />
           <property
             Id="d0423537-6360-46b6-a1b3-29f1f11babc9"
             name="length"
@@ -43,37 +36,6 @@
             isComposite="false" />
         </ownedAttributesInternal>
       </class>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <enumeration
-        Id="c3c6071b-8555-493f-870d-8afbe4fb658d"
-        name="BoatType"
-        isAbstract="false"
-        isLeaf="false">
-        <suppliersInternal>
-          <dependency
-            Id="0b42d1af-654a-4ccb-9f98-0eae3f9d28a5">
-            <classMoniker
-              Id="939b4243-62af-46bd-9ed5-6b7b0f015d6d"
-              LastKnownName="Boat"
-              LastKnownLocation="Package_1410.uml" />
-          </dependency>
-        </suppliersInternal>
-        <ownedLiterals>
-          <enumerationLiteral
-            Id="19f1d111-e260-41bb-9f31-fcd7a944335a"
-            name="Sailboat" />
-          <enumerationLiteral
-            Id="ca698165-bb79-458f-b528-fc415186d03d"
-            name="Motorsailer" />
-          <enumerationLiteral
-            Id="a94a4575-8539-427b-8a88-ba70ebd55850"
-            name="Kayak/Canoe" />
-          <enumerationLiteral
-            Id="22e64c61-f26f-45d1-bded-38f5cfedce78"
-            name="Other" />
-        </ownedLiterals>
-      </enumeration>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
@@ -160,7 +122,7 @@
             isComposite="false" />
           <property
             Id="a77f7702-1e99-49b9-b526-ab7f5769573e"
-            name="personalCodeNumber"
+            name="SSN"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -181,6 +143,40 @@
             aggregation="None"
             isComposite="false" />
         </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="a806a657-93a5-4329-96f6-ecc0bfdbbc20"
+            name="CreateBoat"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="0831e3dc-6d79-433a-9f45-d9c3c4f08f97"
+            name="Boats"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="9139cbb0-3526-4a48-83be-26e7876c3933"
+            name="UpdateBoat"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="0f0317bc-d58e-4b98-bbdf-ec0dcaecc1a3"
+            name="DeleteBoat"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -243,6 +239,40 @@
             </relationshipOwnedElementsInternal>
           </association>
         </targetEnds>
+        <ownedOperationsInternal>
+          <operation
+            Id="5c1422cd-caf3-4b38-9a3f-19491306d91a"
+            name="CreateMember"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="b0d1f17c-e4ad-466f-bb11-7b74049880f0"
+            name="GetMember"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="81751fd1-c52b-4177-9e58-b31e73a5d6e3"
+            name="UpdateMember"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="87ae3142-b3c1-4972-a6bb-62a198f7217b"
+            name="DeleteMember"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
   </packagedElements>

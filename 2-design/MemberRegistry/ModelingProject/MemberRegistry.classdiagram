@@ -11,40 +11,12 @@
               <ownedAttributesInternal>
                 <property Id="b8eb4343-12ea-486b-b4ca-b893221e55c8" name="boatType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="da7d25b2-7e08-4715-ba1c-6a3721f37428" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="6160115d-8002-417e-ba38-e30d60b33d64" LastKnownName="BoatType" />
-                  </type_NamedElement>
                 </property>
                 <property Id="d7ebe608-10c0-4232-aed2-695b976d468f" name="length" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="d0423537-6360-46b6-a1b3-29f1f11babc9" />
                 </property>
               </ownedAttributesInternal>
             </class>
-          </packageHasNamedElement>
-          <packageHasNamedElement>
-            <enumeration Id="cb258c69-a42e-49b1-b1cb-900d732c62a4" name="BoatType" isAbstract="false" isLeaf="false">
-              <elementDefinition Id="c3c6071b-8555-493f-870d-8afbe4fb658d" />
-              <suppliersInternal>
-                <dependency Id="f8d3207a-26f8-4d92-af6f-328dd16f481d">
-                  <classMoniker Id="1909f12c-7cc4-4440-9dc1-5b54c414b589" LastKnownName="Boat" />
-                  <elementDefinition Id="0b42d1af-654a-4ccb-9f98-0eae3f9d28a5" />
-                </dependency>
-              </suppliersInternal>
-              <ownedLiterals>
-                <enumerationLiteral Id="eea8aa6b-e633-4c2f-8d3c-6cc5e3c04958" name="Sailboat">
-                  <elementDefinition Id="19f1d111-e260-41bb-9f31-fcd7a944335a" />
-                </enumerationLiteral>
-                <enumerationLiteral Id="c01b9ed1-7585-4d1a-8f93-14bbbf705e22" name="Motorsailer">
-                  <elementDefinition Id="ca698165-bb79-458f-b528-fc415186d03d" />
-                </enumerationLiteral>
-                <enumerationLiteral Id="826c559b-60fd-4fe8-8391-3fe2d8c09d6b" name="Kayak/Canoe">
-                  <elementDefinition Id="a94a4575-8539-427b-8a88-ba70ebd55850" />
-                </enumerationLiteral>
-                <enumerationLiteral Id="07b1ca6d-b05a-4bc1-a5da-81c4d21e0b7f" name="Other">
-                  <elementDefinition Id="22e64c61-f26f-45d1-bded-38f5cfedce78" />
-                </enumerationLiteral>
-              </ownedLiterals>
-            </enumeration>
           </packageHasNamedElement>
           <packageHasNamedElement>
             <class Id="73fdfc90-daaa-41da-8a62-75e79121ff70" name="Member" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -84,13 +56,27 @@
                 <property Id="12fd27ac-ac6b-4d9d-a682-ef6de56b2e3b" name="firstName" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="ced25e4e-54ba-4b0f-8deb-640fb72d5cb2" />
                 </property>
-                <property Id="5a157524-38db-417c-89f0-2ccab4bc05b0" name="personalCodeNumber" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <property Id="5a157524-38db-417c-89f0-2ccab4bc05b0" name="SSN" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="a77f7702-1e99-49b9-b526-ab7f5769573e" />
                 </property>
                 <property Id="418fdb7a-d162-4d9c-9c21-97ab74b7af4a" name="lastName" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="7b35e0cd-1f52-453f-ad25-11e3f6c55ff8" />
                 </property>
               </ownedAttributesInternal>
+              <ownedOperationsInternal>
+                <operation Id="55fe2d74-c726-44eb-be17-640615862b8c" name="CreateBoat" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="a806a657-93a5-4329-96f6-ecc0bfdbbc20" />
+                </operation>
+                <operation Id="120c8fd1-fe00-426b-a3a1-241de1bad7e0" name="Boats" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="0831e3dc-6d79-433a-9f45-d9c3c4f08f97" />
+                </operation>
+                <operation Id="a2584ada-3a02-4958-96ea-c9bd6c50a8fb" name="UpdateBoat" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="9139cbb0-3526-4a48-83be-26e7876c3933" />
+                </operation>
+                <operation Id="94d4f73f-8ab6-48b5-b215-0c3b0c5ecaa2" name="DeleteBoat" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="0f0317bc-d58e-4b98-bbdf-ec0dcaecc1a3" />
+                </operation>
+              </ownedOperationsInternal>
             </class>
           </packageHasNamedElement>
           <packageHasNamedElement>
@@ -124,6 +110,20 @@
                   <elementDefinition Id="de1ead5e-3b14-4a18-a1f6-3b8084dcb78f" />
                 </association>
               </targetEnds>
+              <ownedOperationsInternal>
+                <operation Id="2d5920b4-26d7-44cc-aa56-3255d0a34828" name="CreateMember" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="5c1422cd-caf3-4b38-9a3f-19491306d91a" />
+                </operation>
+                <operation Id="89b39552-8eb4-43aa-a944-5f96742b7635" name="GetMember" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="b0d1f17c-e4ad-466f-bb11-7b74049880f0" />
+                </operation>
+                <operation Id="c117f0f0-9ac3-4d86-8eaa-a2482ffa7c6a" name="UpdateMember" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="81751fd1-c52b-4177-9e58-b31e73a5d6e3" />
+                </operation>
+                <operation Id="21ed396f-eabd-4dc7-bc58-936f84bdf853" name="DeleteMember" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="87ae3142-b3c1-4972-a6bb-62a198f7217b" />
+                </operation>
+              </ownedOperationsInternal>
             </class>
           </packageHasNamedElement>
         </packagedElements>
@@ -167,17 +167,27 @@
                   <interfaceMoniker Id="8f3ba5f7-10ac-42a2-b5d5-1b148e588e31" LastKnownName="ConsoleView" />
                   <elementDefinition Id="c214d042-ad7a-4196-8acf-33b7eb41d7ba" />
                 </dependency>
+                <dependency Id="3a9254fa-be1d-4240-b2cc-8ff34299ffbc">
+                  <classMoniker Id="e5084011-93af-4569-af21-c24bc5fe4a00" LastKnownName="DataController" />
+                  <elementDefinition Id="abf279f7-1bd4-483e-844b-918481ec4263" />
+                </dependency>
+              </suppliersInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="e5084011-93af-4569-af21-c24bc5fe4a00" name="DataController" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="6a65489e-89ed-4584-b777-da9f5aedcf3f" />
+              <suppliersInternal>
+                <dependency Id="113676e5-67b2-4823-9ffe-04095a853457">
+                  <classMoniker Id="d7be4254-90e9-4413-9eea-cfc53c8bf584" LastKnownName="MemberList" />
+                  <elementDefinition Id="5663c7f3-3a58-4e72-80e0-90651d539cfb" />
+                </dependency>
               </suppliersInternal>
             </class>
           </packageHasNamedElement>
         </packagedElements>
       </package>
     </logicalClassDesignerModelHasPackages>
-    <packageHasNamedElement>
-      <referencedType Id="6160115d-8002-417e-ba38-e30d60b33d64" name="BoatType" isAbstract="false" isLeaf="false" cachedFullName="ModelingProject::model::BoatType">
-        <elementDefinition Id="c3c6071b-8555-493f-870d-8afbe4fb658d" />
-      </referencedType>
-    </packageHasNamedElement>
   </packagedElements>
   <package Id="78ff23a3-c060-4847-8f7a-d669b486b984" name="ModelingProject">
     <elementDefinition Id="32284f7c-6212-4ada-83fc-baff9661a58a" />

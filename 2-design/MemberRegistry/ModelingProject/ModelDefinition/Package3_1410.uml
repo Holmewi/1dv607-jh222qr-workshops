@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="e70e6fde-b619-420f-b8a5-e6ec7a054226"
   name="controller" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -32,6 +32,31 @@
               Id="ca75390e-d0d9-47e9-a481-f8a61c2a236a"
               LastKnownName="ConsoleView"
               LastKnownLocation="Package2_1410.uml" />
+          </dependency>
+          <dependency
+            Id="abf279f7-1bd4-483e-844b-918481ec4263">
+            <classMoniker
+              Id="6a65489e-89ed-4584-b777-da9f5aedcf3f"
+              LastKnownName="DataController"
+              LastKnownLocation="Package3_1410.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="6a65489e-89ed-4584-b777-da9f5aedcf3f"
+        name="DataController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="5663c7f3-3a58-4e72-80e0-90651d539cfb">
+            <classMoniker
+              Id="9b549b33-be40-4585-87e9-bf5a87d5cf36"
+              LastKnownName="MemberList"
+              LastKnownLocation="Package_1410.uml" />
           </dependency>
         </suppliersInternal>
       </class>

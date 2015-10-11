@@ -17,6 +17,7 @@ namespace MemberRegistry.controller
         {
             m_ml = a_ml;
         }
+
         public void UpdateDataStorage()
         {
             File.WriteAllText(path + file, null);
