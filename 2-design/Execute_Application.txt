@@ -1,0 +1,2 @@
+The build release is located in ../MemberRegistry/MemberRegistry/bin/release
+Click the MemberRegistry.exe to run the application
