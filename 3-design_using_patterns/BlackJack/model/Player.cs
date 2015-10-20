@@ -9,8 +9,9 @@ namespace BlackJack.model
     {
         private List<Card> m_hand = new List<Card>();
 
-        public void DealCard(Card a_card)
+        public void DealCard(bool a_show, Card a_card)
         {
+            a_card.Show(a_show);
             m_hand.Add(a_card);
         }
 
