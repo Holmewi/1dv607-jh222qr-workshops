@@ -16,6 +16,12 @@ namespace BlackJack.model
             m_player = new Player();
         }
 
+        public void AddObserver(IObserver a_observer)
+        {
+            m_dealer.AddObserver(a_observer);
+            m_player.AddObserver(a_observer);
+        }
+
         public bool IsGameOver()
         {
             return m_dealer.IsGameOver();
@@ -38,7 +44,6 @@ namespace BlackJack.model
 
         public bool Stand()
         {
-            // TODO: Implement this according to Game_Stand.sequencediagram
             return m_dealer.Stand();
         }
 

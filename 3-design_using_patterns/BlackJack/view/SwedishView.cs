@@ -15,6 +15,7 @@ namespace BlackJack.view
             System.Console.WriteLine("----------------------");
             System.Console.WriteLine("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
         }
+
         public PlayGame.ActionInput GetInput()
         {
             do
@@ -35,6 +36,7 @@ namespace BlackJack.view
 
             } while (true);
         }
+
         public void DisplayCard(model.Card a_card)
         {
             if (a_card.GetColor() == model.Card.Color.Hidden)
@@ -50,14 +52,23 @@ namespace BlackJack.view
                 System.Console.WriteLine("{0} {1}", colors[(int)a_card.GetColor()], values[(int)a_card.GetValue()]);
             }
         }
+
+        public void DisplayPause()
+        {
+            System.Console.WriteLine("Waiting for dealer...");
+            System.Threading.Thread.Sleep(3000);
+        }
+
         public void DisplayPlayerHand(IEnumerable<model.Card> a_hand, int a_score)
         {
             DisplayHand("Spelare", a_hand, a_score);
         }
+
         public void DisplayDealerHand(IEnumerable<model.Card> a_hand, int a_score)
         {
             DisplayHand("Croupier", a_hand, a_score);
         }
+
         public void DisplayGameOver(bool a_dealerIsWinner)
         {
             System.Console.Write("Slut: ");

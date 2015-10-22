@@ -1,12 +1,17 @@
-﻿using System;
+﻿using BlackJack.model;
+using BlackJack.view;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace BlackJack.controller
 {
-    class PlayGame
+    class PlayGame : IObserver
     {
+        private view.IView m_view;
+        private model.Game m_game;
+
         public enum ActionInput
         {
             Play,
@@ -15,31 +20,49 @@ namespace BlackJack.controller
             Quit
         }
 
-        public bool Play(model.Game a_game, view.IView a_view)
+        public PlayGame(model.Game a_game, view.IView a_view)
         {
-            a_view.DisplayWelcomeMessage();
-            
-            a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
-            a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
+            m_game = a_game;
+            m_view = a_view;
+            m_game.AddObserver(this);
+        }
 
-            if (a_game.IsGameOver())
+        public void UpdateCardInHand()
+        {
+            m_view.DisplayPause();
+            DisplayGameTable();
+        }
+
+        public void DisplayGameTable()
+        {
+            m_view.DisplayWelcomeMessage();
+
+            m_view.DisplayDealerHand(m_game.GetDealerHand(), m_game.GetDealerScore());
+            m_view.DisplayPlayerHand(m_game.GetPlayerHand(), m_game.GetPlayerScore());
+        }
+
+        public bool Play()
+        {
+            DisplayGameTable();
+
+            if (m_game.IsGameOver())
             {
-                a_view.DisplayGameOver(a_game.IsDealerWinner());
+                m_view.DisplayGameOver(m_game.IsDealerWinner());
             }
-        
-            var input = a_view.GetInput();
+
+            var input = m_view.GetInput();
 
             if (input == ActionInput.Play)
             {
-                a_game.NewGame();
+                m_game.NewGame();
             }
             else if (input == ActionInput.Hit)
             {
-                a_game.Hit();
+                m_game.Hit();
             }
             else if (input == ActionInput.Stand)
             {
-                a_game.Stand();
+                m_game.Stand();
             }
 
             return input != ActionInput.Quit;

@@ -41,6 +41,12 @@ namespace BlackJack.view
             System.Console.WriteLine("{0} of {1}", a_card.GetValue(), a_card.GetColor());
         }
 
+        public void DisplayPause()
+        {
+            System.Console.WriteLine("Waiting for dealer...");
+            System.Threading.Thread.Sleep(3000);
+        }
+
         public void DisplayPlayerHand(IEnumerable<model.Card> a_hand, int a_score)
         {
             DisplayHand("Player", a_hand, a_score);
