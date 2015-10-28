@@ -15,7 +15,7 @@ namespace BlackJack.view
             System.Console.WriteLine("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
         }
 
-        public PlayGame.ActionInput GetInput()
+        public view.ActionInput GetInput()
         {
             do
             {
@@ -24,13 +24,13 @@ namespace BlackJack.view
                 switch (input.Key)
                 {
                     case ConsoleKey.P:
-                        return PlayGame.ActionInput.Play;
+                        return view.ActionInput.Play;
                     case ConsoleKey.H:
-                        return PlayGame.ActionInput.Hit;
+                        return view.ActionInput.Hit;
                     case ConsoleKey.S:
-                        return PlayGame.ActionInput.Stand;
+                        return view.ActionInput.Stand;
                     case ConsoleKey.Q:
-                        return PlayGame.ActionInput.Quit;
+                        return view.ActionInput.Quit;
                 }
                 
             } while (true);

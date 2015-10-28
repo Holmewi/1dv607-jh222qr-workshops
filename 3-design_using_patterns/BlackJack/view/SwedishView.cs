@@ -16,7 +16,7 @@ namespace BlackJack.view
             System.Console.WriteLine("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
         }
 
-        public PlayGame.ActionInput GetInput()
+        public view.ActionInput GetInput()
         {
             do
             {
@@ -25,13 +25,13 @@ namespace BlackJack.view
                 switch (input.Key)
                 {
                     case ConsoleKey.P:
-                        return PlayGame.ActionInput.Play;
+                        return view.ActionInput.Play;
                     case ConsoleKey.H:
-                        return PlayGame.ActionInput.Hit;
+                        return view.ActionInput.Hit;
                     case ConsoleKey.S:
-                        return PlayGame.ActionInput.Stand;
+                        return view.ActionInput.Stand;
                     case ConsoleKey.Q:
-                        return PlayGame.ActionInput.Quit;
+                        return view.ActionInput.Quit;
                 }
 
             } while (true);

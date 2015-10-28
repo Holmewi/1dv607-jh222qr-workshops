@@ -6,10 +6,18 @@ using System.Text;
 
 namespace BlackJack.view
 {
+    public enum ActionInput
+    {
+        Play,
+        Hit,
+        Stand,
+        Quit
+    }
+
     interface IView
     {
         void DisplayWelcomeMessage();
-        PlayGame.ActionInput GetInput();
+        view.ActionInput GetInput();
         void DisplayCard(model.Card a_card);
         void DisplayPlayerHand(IEnumerable<model.Card> a_hand, int a_score);
         void DisplayDealerHand(IEnumerable<model.Card> a_hand, int a_score);

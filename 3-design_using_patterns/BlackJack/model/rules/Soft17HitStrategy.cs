@@ -15,7 +15,7 @@ namespace BlackJack.model.rules
             {
                 foreach (Card card in a_dealer.GetHand())
                 {
-                    if (card.GetValue() == Card.Value.Ace)
+                    if (card.GetValue() == Card.Value.Ace && a_dealer.CalcScore() - 11 == 6)
                     {
                         return true;
                     }

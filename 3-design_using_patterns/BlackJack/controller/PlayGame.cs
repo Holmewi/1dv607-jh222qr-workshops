@@ -52,20 +52,20 @@ namespace BlackJack.controller
 
             var input = m_view.GetInput();
 
-            if (input == ActionInput.Play)
+            if (input == view.ActionInput.Play)
             {
                 m_game.NewGame();
             }
-            else if (input == ActionInput.Hit)
+            else if (input == view.ActionInput.Hit)
             {
                 m_game.Hit();
             }
-            else if (input == ActionInput.Stand)
+            else if (input == view.ActionInput.Stand)
             {
                 m_game.Stand();
             }
 
-            return input != ActionInput.Quit;
+            return input != view.ActionInput.Quit;
         }
     }
 }
